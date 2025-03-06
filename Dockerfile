@@ -5,7 +5,7 @@ WORKDIR /app
 
 # 3. Copy the package.json, package-lock.json and installing dependencies
 COPY package.json package-lock.json ./
-RUN npm install --legacy-peer-deps
+RUN npm install --frozen-lockfile
 
 # 4. Copy the rest of the application codes and build it
 COPY . .
@@ -15,19 +15,19 @@ RUN npm run build
 FROM nginx:latest
 
 # 6. Set the working directory
-WORKDIR /usr/share/nginx/html
+#WORKDIR /usr/share/nginx/html
 
 # 7. Remove the default Nginx static files
-RUN rm -rf ./*
+#RUN rm -rf ./*
 
 # 8. Copy the built files to Nginx's default public directory
-COPY --from=build /app/dist ./
+COPY --from=build /app/build /usr/share/nginx/html
 
 # 9. Copy the Nginx configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
 
-# 10. Expose port 80
-EXPOSE 80
+# 10. Expose port 3000
+EXPOSE 3000
 
 # 11. Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
