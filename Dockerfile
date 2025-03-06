@@ -21,7 +21,7 @@ FROM nginx:latest
 #RUN rm -rf ./*
 
 # 8. Copy the built files to Nginx's default public directory
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # 9. Copy the Nginx configuration file
 #COPY nginx.conf /etc/nginx/nginx.conf
