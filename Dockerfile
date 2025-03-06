@@ -9,7 +9,7 @@ RUN npm install --frozen-lockfile
 
 # 4. Copy the rest of the application codes and build it
 COPY . .
-RUN npm run build
+RUN npm run build && ls -l /app/dist
 
 # 5. Use Nginx to serve the built React app
 FROM nginx:latest
@@ -18,16 +18,16 @@ FROM nginx:latest
 #WORKDIR /usr/share/nginx/html
 
 # 7. Remove the default Nginx static files
-#RUN rm -rf /usr/share/nginx/html/*
+RUN rm -rf /usr/share/nginx/html/*
 
 # 8. Copy the built files to Nginx's default public directory
 COPY --from=build /app/dist /usr/share/nginx/html
-
+RUN ls -l /usr/share/nginx/html
 # 9. Copy the Nginx configuration file
 #COPY nginx.conf /etc/nginx/nginx.conf
 
-# 10. Expose port 3000
-EXPOSE 3000
+# 10. Expose port 80
+EXPOSE 80
 
 # 11. Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
