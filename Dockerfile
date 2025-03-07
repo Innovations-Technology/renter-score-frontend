@@ -23,7 +23,7 @@ RUN rm -rf /usr/share/nginx/html/*
 # 8. Copy the built files to Nginx's default public directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
-RUN ls -l /react-app
+RUN ls -l /usr/share/nginx/html
 # 9. Copy the Nginx configuration file
 #COPY nginx.conf /etc/nginx/nginx.conf
 
