@@ -9,7 +9,7 @@ RUN npm install --frozen-lockfile
 
 # 4. Copy the rest of the application codes and build it
 COPY . .
-RUN npm run build && ls -l /app/build
+RUN npm run build && ls -l /app/dist
 
 # 5. Use Nginx to serve the built React app
 FROM nginx:latest
@@ -23,7 +23,7 @@ WORKDIR /react-app
 
 # 8. Copy the built files to Nginx's default public directory
 #COPY --from=build /app/dist /usr/share/nginx/html
-COPY --from=build /app/build /react-app
+COPY --from=build /app/dist /react-app
 
 RUN ls -l /react-app
 # 9. Copy the Nginx configuration file
