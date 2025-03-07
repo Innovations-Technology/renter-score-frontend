@@ -28,7 +28,7 @@ RUN ls -l /usr/share/nginx/html
 #COPY nginx.conf /etc/nginx/nginx.conf
 
 # 10. Expose port 3000
-EXPOSE 80
+EXPOSE 3000
 
 # 11. Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
