@@ -53,6 +53,7 @@ jobs:
          username: ${{ secrets.DROPLET_USER }}
          key: ${{ secrets.SSH_PRIVATE_KEY }}
          script: |
+           set -e # Exit with nonzero exit code if anything fails
            echo "SSH connection successful"
            cd /root/renter-score
            docker-compose down
