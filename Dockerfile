@@ -15,10 +15,10 @@ RUN npm run build
 FROM nginx:latest
 
 # 6. Set the working directory
-WORKDIR /usr/share/nginx/html
+#WORKDIR /usr/share/nginx/html
 
 # 7. Remove the default Nginx static files
-RUN rm -rf ./*
+RUN rm -rf /usr/share/nginx/html/*
 
 # 8. Copy the built files to Nginx's default public directory
 COPY --from=build /app/dist /usr/share/nginx/html
