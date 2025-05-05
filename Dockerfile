@@ -37,4 +37,4 @@ EXPOSE 80
 # 11. Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
 
-LABEL authors="aungtuntun"
+LABEL authors="ayenwetun"
