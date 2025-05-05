@@ -12,7 +12,6 @@ function App() {
     console.log("🔍 Starting search for:", query);
     setLoading(true);
     try {
-      //const response = await fetch('http://128.199.231.220/api/v2/property/properties');
       const response = await fetch('/api/api/v2/property/properties');
       const data = await response.json();
       console.log("✅ API returned:", data);
