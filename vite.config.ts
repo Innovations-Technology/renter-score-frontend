@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://128.199.231.220',
+        target: 'https://renterscore.live/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
