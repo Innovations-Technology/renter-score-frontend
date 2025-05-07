@@ -56,7 +56,7 @@ jobs:
            set -e # Exit with nonzero exit code if anything fails
            echo "SSH connection successful"
            cd /root/renter-score
-           docker-compose down
+           docker-compose down -v
            docker-compose pull --ignore-pull-failures
            docker-compose up -d --force-recreate --remove-orphans
            docker image prune -f
